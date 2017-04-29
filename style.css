@@ -1,0 +1,158 @@
+#paris {
+    border-left: 1px solid #eef1f5;
+    border-right: 1px solid #eef1f5;
+    border-top: 4px solid #16212c;
+    border-bottom: 1px solid #eef1f5;
+    padding: 10px 0;
+    width: 100%;
+    color: #16212c;
+}
+
+#paris .grasdecodeurs {
+    font-family: "Helvetica Neue", Helvetica, Arial;
+    font-size: 1.7rem;
+    font-weight: bold;
+}
+
+#paris .titre {
+    padding: 6px 16px;
+    display: block;
+}
+
+#paris .texte {
+    margin: 1rem .5rem;
+    padding: 0 10px;
+}
+
+#paris .explications {
+    margin: 20px 0px;
+    padding: 10px;
+    background-color: #f5f6f8;
+    color: #383f4e;
+    text-align: center;
+}
+
+.ui-tooltip p:before {
+    color: #a2a9ae;
+    content: '› ';
+    font-family: arial;
+    display: inline-block;
+    font-size: inherit;
+    left: 0;
+    position: relative;
+    width: 9px;
+    font-weight: 400
+}
+
+.ui-tooltip p.petiteliste {
+    margin-left: 1rem;
+}
+
+.tooltipdecodeurs .titre_tt {
+    font-family: "Helvetica Neue", Helvetica, Arial;
+    font-weight: bold;
+    font-size: 1.4rem;
+    letter-spacing: .07rem;
+}
+
+.tooltipdecodeurs .hr {
+    margin-top: 1rem;
+    border-top: 1px solid #e8eaee;
+    padding-bottom: 1rem;
+}
+
+.tooltipdecodeurs .bulle {
+    border-radius: 50%;
+    width: 1rem;
+    height: 1rem;
+    border: 0;
+    display: inline-block;
+    margin: -.3rem .5rem 0 0;
+    vertical-align: middle;
+    cursor: default;
+}
+
+.tooltipdecodeurs div {
+    display: block!important;
+}
+
+.tooltipdecodeurs {
+    border-radius: 4px;
+    padding: 2rem;
+    position: absolute;
+    z-index: 9999;
+    max-width: 350px;
+    -webkit-box-shadow: none!important;
+    box-shadow: none!important;
+    border: 2px solid #ccd0d3!important;
+    background: #fff!important;
+    color: #222
+}
+
+#paris .source {
+    padding: 0 10px;
+    text-align: right;
+    color: #8b9299;
+    font-size: 1.2rem;
+}
+
+#pariscarte .bv {
+    cursor: pointer;
+}
+
+.frontieres {
+    fill: none;
+    stroke: rgba(0, 0, 0, .5);
+    stroke-width: 1px;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+    pointer-events: none;
+}
+
+#paris .selections {
+    width: 60%;
+    margin: 10px 20%;
+    text-align: center;
+}
+
+#quidonc {
+    width: 100%;
+}
+
+#paris span.bulle {
+    border-radius: 50%;
+    width: 1.5rem!important;
+    height: 1.5rem!important;
+    font-weight: bold!important;
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+    font-size: 1.7rem;
+    line-height: 140%;
+    color: #FFF;
+    padding-top: .1rem;
+    margin-bottom: .2rem;
+    margin-right: .5rem;
+}
+
+#pariscarte .contours {
+    fill: none;
+    stroke: rgba(0, 0, 0, .4);
+    stroke-width: 1px;
+    pointer-events: none;
+    /*    stroke-dasharray: 5,2;
+*/
+}
+
+#paris .legende {
+    font-size: 1.7rem;
+    text-align: center;
+    min-height: 8rem;
+    width: 90%;
+    margin: 10px 5%;
+}
+
+.legende .unecouleur {
+    display: inline-block;
+    padding: 1rem;
+}
