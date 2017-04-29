@@ -1,0 +1,21 @@
+{
+  "name": "map_interactive",
+  "authors": [
+    "Amir Dib <dib.amir@gmail.com>"
+  ],
+  "description": "packages utiles dans le cadre de la création d'une carte intéractive de visualisation des résultats",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "d3": "^4.8.0",
+    "topojson": "^3.0.0"
+  }
+}
