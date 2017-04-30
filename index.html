@@ -7,8 +7,24 @@
 
   <body>
     
-      <div id="paris">
-	<div id="pariscarte"></div>
+    <div id="paris">
+      <div class="selections">
+        <SELECT id="quidonc">
+            <OPTION selected value="entete">Candidat arrivé premier</OPTION>
+            <OPTION value="macron">Emmanuel Macron</OPTION>
+            <OPTION value="fillon">François Fillon</OPTION>
+            <OPTION value="melenchon">Jean-Luc Mélenchon</OPTION>
+            <OPTION value="hamon">Benoît Hamon</OPTION>
+            <OPTION value="lepen">Marine Le Pen</OPTION>
+            <OPTION value="dupontaignan">Nicolas Dupont-Aignan</OPTION>
+            <OPTION value="asselineau">François Asselineau</OPTION>
+            <OPTION value="poutou">Philippe Poutou</OPTION>
+            <OPTION value="lassalle">Jean Lassalle</OPTION>
+            <OPTION value="arthaud">Nathalie Arthaud</OPTION>
+            <OPTION value="cheminade">Jacques Cheminade</OPTION>
+        </SELECT>
+      </div>
+            <div id="pariscarte"></div>
 	<div class="legende">
 	</div>
 	<div class="source">Source&nbsp;: <a href="http://elections.interieur.gouv.fr/presidentielle-2017/011/075/index.html" target="_blank">ministère de l'intérieur</a></div>
@@ -19,8 +35,12 @@
   <script src="bower_components/angular/angular.min.js"></script>
   <script src="bower_components/d3/d3.js"></script>
   <script src="bower_components/topojson/topojson.js"></script>
+  <script src="bower_components/requirejs/require.js"></script>
+  <script src="bower_components/jquery/dist/jquery.js"></script>
 
+  <script src="data.js"></script>
   <script src="main.js"></script>
+
 
 
 
