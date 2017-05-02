@@ -6,7 +6,7 @@
   "description": "packages utiles dans le cadre de la création d'une carte intéractive de visualisation des résultats",
   "main": "",
   "license": "MIT",
-  "homepage": "",
+  "homepage": "https://github.com/amirdib/resultmap",
   "ignore": [
     "**/.*",
     "node_modules",
