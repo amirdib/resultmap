@@ -1,12 +1,12 @@
 {
   "name": "map_interactive",
+  "homepage": "https://github.com/amirdib/resultmap",
   "authors": [
     "Amir Dib <dib.amir@gmail.com>"
   ],
-  "description": "packages utiles dans le cadre de la création d'une carte intéractive de visualisation des résultats",
+  "description": "",
   "main": "",
   "license": "MIT",
-  "homepage": "https://github.com/amirdib/resultmap",
   "ignore": [
     "**/.*",
     "node_modules",
@@ -15,9 +15,8 @@
     "tests"
   ],
   "dependencies": {
-    "d3": "^4.8.0",
     "topojson": "^3.0.0",
-    "requirejs": "^2.3.3",
-    "jquery": "^3.2.1"
+    "jquery": "^3.2.1",
+    "d3": "^4.8.0"
   }
 }
