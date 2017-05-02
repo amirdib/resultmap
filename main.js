@@ -44,9 +44,29 @@ d3.selection.prototype.moveToBack = function() {
         if (firstChild) {
             this.parentNode.insertBefore(this, firstChild);
         }
+	
     });
+
+//    geneLegende(d)
 };
 
+function geneLegende(d) {
+    console.log('legend')
+        $("#paris.legende").empty()
+        malegende = "";
+        if (d != undefined) {
+            for (i = 0; i <= dico[d].steps.length - 2; i++) {
+                malegende += "<div class=\"unecouleur\">"
+                malegende += "<span class=\"bulle\" style=\"background-color:" + dico[d].color[i] + ";\"></span>"
+                malegende += String(dico[d].steps[i]).replace(".", ",")
+                if (i != dico[d].steps.length - 2) malegende += " à "
+                malegende += String(dico[d].steps[i + 1]).replace("100", "").replace(".", ",") + "&nbsp;" + ((i == dico[d].steps.length - 2) ? "% et +" : "%")
+                malegende += "</div>"
+            };
+        }
+        $("#paris .legende").html(malegende)
+
+    }
 
 var svg = d3.select(map.getPanes().overlayPane).append("svg"),
     g = svg.append("g").attr("class", "leaflet-zoom-hide");
@@ -156,7 +176,7 @@ function recolorer(d) {
                     return d3.rgb(d3.select(this).attr("fill")).brighter(1)
                 })
         });
-//       geneLegende(d)
+       geneLegende(d)
 }
 
 
@@ -181,7 +201,6 @@ function debase(d) {
             d3.select(this).moveToBack()
                 .attr("fill", colorer)
         });
-    geneLegende(d)
 
 }
 
@@ -199,6 +218,11 @@ function geneLegende(d) {
         };
     }
     $("#paris .legende").html(malegende)
+    //    d3.selectAll(".bulle").style("background-color","#feedf6")
+    d3.selectAll(".bulle").style("background-color",function(e,i){
+	return dico[d].couleur[i+1];
+    })
+//    debugger;
 
 }
 
