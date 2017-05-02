@@ -84,21 +84,24 @@ d3.json("data/paris_bv.json", function(error, fra) {
 	.on("click", redraw);
 
     
-    var bounds = path.bounds(topojson.feature(fra, fra.objects.paris))
-    var topLeft = bounds[0],
-	bottomRight = bounds[1];
+
 
     recolorer('melenchon');
-    map.on("viewreset", reset);
+    map.on("moveend", reset);
+//    map.on("zoomend", reset);
     reset();
     
     function reset(){
 	
-
-	var x_offset =600,
-	    y_offset =600;
-	svg.attr("width", 1000 + bottomRight[0] - topLeft[0])
-	    .attr("height",  1000 + bottomRight[1] - topLeft[1])
+    var bounds = path.bounds(topojson.feature(fra, fra.objects.paris))
+    var topLeft = bounds[0],
+	bottomRight = bounds[1];
+	
+	var x_offset =0,
+	    y_offset =0;
+	
+	svg.attr("width", 0 + bottomRight[0] - topLeft[0])
+	    .attr("height",  0 + bottomRight[1] - topLeft[1])
 	    .style("left", -x_offset + topLeft[0] + "px")
 	    .style("top", -y_offset + topLeft[1] + "px");
 
