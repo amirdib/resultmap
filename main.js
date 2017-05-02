@@ -205,11 +205,11 @@ function geneLegende(d) {
 }
 
 
-// $("#quidonc").on("change", function(d) {
-//         var qui = $(this).val();
-//         if (qui == "entete") debase()
-//         else recolorer(qui)
-//     })
+$("#quidonc").on("change", function(d) {
+        var qui = $(this).val();
+        if (qui == "entete") debase()
+        else recolorer(qui)
+    })
 
 function colorer(d) {
     var tableau = m.get(d.properties.id)
