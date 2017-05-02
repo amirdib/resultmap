@@ -1,11 +1,16 @@
  var start_coord = [48.856578, 2.351828]
 
 
+var myStyle = {
+    weight: 2,
+    fillOpacity: 0
+};
+
 var map = L.map('map').setView(start_coord, 11);
 
 L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {}).addTo(map);
 
-L.geoJson(circos).addTo(map);
+L.geoJson(circos, {style:myStyle}).addTo(map);
 
 
 
