@@ -10,8 +10,13 @@ var map = L.map('map').setView(start_coord, 11);
 
 L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {}).addTo(map);
 
-L.geoJson(circos, {style:myStyle}).addTo(map);
+var circos = L.geoJson(circos, {style:myStyle})//.addTo(map);
 
+var overlayMaps = {
+    "Circonscriptions": circos
+};
+
+L.control.layers(overlayMaps).addTo(map);
 
 
 var w = 600,
@@ -43,53 +48,6 @@ d3.selection.prototype.moveToBack = function() {
 };
 
 
-
-// var w = document.getElementById("paris").offsetWidth
-// echelle = w * 250
-
-// h = w * .7
-// m = d3.map(data, function(d, i) {
-//     if (d != undefined) return d[1];
-// });
-
-
-// //mobile = false;
-
-// /* Projection conique conforme de Lambert, « Lambert 93 » */
-// var projection = d3.geoConicEquidistant()
-//     .scale(echelle)
-//     .precision(.1)
-//     .rotate([-3, 0])
-//     .translate([w / 2, h / 3])
-//     .center([-.66, 48.856614])
-//     .parallels([44, 49]);
-
-// var path = d3.geoPath()
-//     .projection(projection);
-
-
-
-// TODO: svg:svg
-// var svg = d3.select("#pariscarte").insert("svg:svg")
-//     .attr("width", "100%")
-//     .attr("viewBox", "0 0 " + w + " " + h)
-
-// var carte = svg.append("g")
-//     .attr("class", "carte")
-
-// arrondissement = carte.append("g")
-//     .attr("id", "arrondissements");
-
-// g = carte.append("g")
-//     .attr("class", "bureaux")
-
-
-// limites = carte.append("g")
-//     .attr("class", "limites")
-
-// var svg = d3.select(map.getPanes().overlayPane).append("svg"),
-//     g = svg.append("g").attr("class", "leaflet-zoom-hide");
-
 var svg = d3.select(map.getPanes().overlayPane).append("svg"),
     g = svg.append("g").attr("class", "leaflet-zoom-hide");
 
@@ -112,7 +70,7 @@ d3.json("data/paris_bv.json", function(error, fra) {
 	.attr("fill", colorer)
 	.attr("stroke", colorer)
 	.attr("stroke-width", 1)
-	.style("opacity","0.9")
+	.style("opacity","0.5")
 	.on("mouseover", function() {
 	    d3.select(this).moveToFront()
 		.attr("fill", function() {
@@ -129,22 +87,24 @@ d3.json("data/paris_bv.json", function(error, fra) {
     console.log('var bounds ', bounds);
     var topLeft = bounds[0],
 	bottomRight = bounds[1];
-    
-    
-    
+
+    recolorer('melenchon');
     map.on("viewreset", reset);
     reset();
     
     function reset(){
 	console.log('RESET ')
 	
-	
-	svg.attr("width", 600 + bottomRight[0] - topLeft[0])
-	    .attr("height", 600 + bottomRight[1] - topLeft[1])
-	    .style("left", topLeft[0] + "px")
-	    .style("top", topLeft[1] + "px");
 
-	g.attr("transform", "translate(" + -topLeft[0] + "," + -topLeft[1] + ")");
+	var x_offset =600,
+	    y_offset =600;
+	svg.attr("width", 1000 + bottomRight[0] - topLeft[0])
+	    .attr("height",  1000 + bottomRight[1] - topLeft[1])
+	    .style("left", -x_offset + topLeft[0] + "px")
+	    .style("top", -y_offset + topLeft[1] + "px");
+
+	
+	g.attr("transform", "translate(" + (x_offset -topLeft[0]) + "," + (y_offset-topLeft[1]) + ")");
 
 	feature.attr("d", path)
 	
@@ -152,9 +112,6 @@ d3.json("data/paris_bv.json", function(error, fra) {
     
     function projectPoint(x, y) {
 	var point = map.latLngToLayerPoint(new L.LatLng(y, x));
-	// console.log('projectPoint')
-	// console.log(x,y)
-	// console.log(point.x,point.y)
 	this.stream.point(point.x, point.y);
     }
 });
@@ -164,92 +121,6 @@ d3.json("data/paris_bv.json", function(error, fra) {
 
 
 // /* on recolore */
-
-
-
-
-// svg.call(d3.zoom()
-//     .scaleExtent([1 / 2, 8])
-//     .on("zoom", zoomed));
-
-// function zoomed(d) {
-//     //debugger;
-//     var graph = d3.select('svg');
-//     graph
-// 	.selectAll('g')
-// //    debugger;
-// 	.attr("transform", "translate(" + d3.event.transform.x + "," + d3.event.transform.y + ") scale(" + d3.event.transform.k + ")");
-//   g.attr("transform", d3.event.transform);
-// }
-
-// function dragged(d) {
-//   d3.select(this).attr("cx", d.x = d3.event.x).attr("cy", d.y = d3.event.y);
-// }
-
-// svg.call(d3.drag()
-//         .on("drag", dragged));
-
-
-
-
-// d3.json("data/circo75.json", function(geoJSON) {
-    
-
-//     var transform = d3.geoTransform({point: projectPoint}),
-//      	path = d3.geoPath().projection(transform);
-    
-//     var feature_circo = g.selectAll("path")
-// 	.data(geoJSON.features)
-// 	.enter()
-// 	.append("path")
-    
-//     var bounds = path.bounds(geoJSON)
-//     console.log('var bounds ', bounds);
-//     var topLeft = bounds[0],
-// 	bottomRight = bounds[1];
-    
-
-    
-//     map.on("viewreset", reset);
-//     reset();
-    
-//     function reset(){
-// 	console.log('RESET ')
-
-
-// 	svg.attr("width", bottomRight[0] - topLeft[0])
-// 	    .attr("height", bottomRight[1] - topLeft[1])
-// 	    .style("left", topLeft[0] + "px")
-// 	    .style("top", topLeft[1] + "px");
-
-// 	g.attr("transform", "translate(" + -topLeft[0] + "," + -topLeft[1] + ")");
-	
-// 	feature_circo.attr("d", path)
-// 	    .attr("id", "circonscriptions")
-// 	    .attr("class", "circo");
-//     }
-    
-//     function projectPoint(x, y) {
-// 	var point = map.latLngToLayerPoint(new L.LatLng(y, x));
-// 	this.stream.point(point.x, point.y);
-//     }
-
-	
-// 	// g.selectAll("path")
-// 	//     .classed("active", centered && function(d) { return d === centered; })
-// 	//     .style("opacity","1");
-	
-// 	// g.transition()
-// 	//     .duration(750)
-// 	//     .selectAll("path.active")
-// 	//     .style("opacity","0.2");
-	
-	
-
-    
-// });
-
-
 
 function recolorer(d) {
     
