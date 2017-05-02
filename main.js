@@ -384,3 +384,12 @@ function redraw(d){
 	//.text(function(d) { return d.data_pie; });
     
 };
+
+d3.select("#range1").on("input", function () {
+
+    svg.selectAll('path.bv')
+                    .transition()
+                    .duration(1)
+                    .ease(d3.easeLinear)
+                    .style("opacity", d3.select("#range1").property("value")/100);
+    });
