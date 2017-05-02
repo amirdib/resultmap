@@ -1032,3 +1032,5 @@ dico = {
         },
     },
 };
+
+candidats = ["dupontaignan", "lepen", "macron", "hamon", "arthaud", "poutou", "cheminade", "lassalle", "melenchon", "asselineau", "fillon"]

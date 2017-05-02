@@ -80,11 +80,11 @@ d3.json("data/paris_bv.json", function(error, fra) {
 	.on("mouseout", function() {
 	    d3.select(this).moveToBack()
 		.attr("fill", colorer)
-	});
+	})
+	.on("click", redraw);
 
     
     var bounds = path.bounds(topojson.feature(fra, fra.objects.paris))
-    console.log('var bounds ', bounds);
     var topLeft = bounds[0],
 	bottomRight = bounds[1];
 
@@ -93,7 +93,6 @@ d3.json("data/paris_bv.json", function(error, fra) {
     reset();
     
     function reset(){
-	console.log('RESET ')
 	
 
 	var x_offset =600,
@@ -217,4 +216,168 @@ function colorer(d) {
         var lequel = data[0][tableau.indexOf(max) + 8]
         return dico[lequel].couleur
     }
+};
+
+
+// BAR PLOT
+
+var margin = {top: 20, right: 20, bottom: 30, left: 40},
+    width = 600 - margin.left - margin.right,
+    height = 300 - margin.top - margin.bottom;
+
+// set the ranges
+var x = d3.scaleBand()
+          .range([0, width])
+          .padding(0.1);
+var y = d3.scaleLinear()
+          .range([height, 0]);
+          
+// append the svg object to the body of the page
+// append a 'group' element to 'svg'
+// moves the 'group' element to the top left margin
+var svg_bar = d3.select("body").select("div#barplot")
+    .append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+    .attr("transform", 
+          "translate(" + margin.left + "," + margin.top + ")");
+ 
+// get the data
+id = "$1-1"
+var results = m[id].slice(8);
+//var candidats = Object.keys(dico)
+// Scale the range of the data in the domains
+x.domain(candidats);
+//y.domain([0, d3.max(results, function(d) { return d; })]);
+y.domain([0, 700]);
+
+  // append the rectangles for the bar chart
+svg_bar.selectAll(".bar")
+    .data(results)
+    .enter()
+    .append("rect")
+    .attr("class", "bar")
+    .attr("x", function(d, i) { return x(candidats[i]); })
+    .attr("width", x.bandwidth())
+    .attr("y", function(d) { return y(d); })
+    .attr("height", function(d) { return height - y(d); })
+    .style("fill", function(d,i) {
+	return dico[candidats[i]].couleur;
+    });
+///    .style("fill", "#DC2A1B ");
+
+// add the x Axis
+svg_bar.append("g")
+    .attr("transform", "translate(0," + height + ")")
+    .call(d3.axisBottom(x));
+// add the y Axis
+svg_bar.append("g")
+    .call(d3.axisLeft(y));
+
+
+
+
+function sum_by_index_of_a_iterable(iterable,reference_iterable, numeric_iterable)
+{
+    sum = 0
+    iterable.forEach(function(e){
+	index = reference_iterable.indexOf(e)
+	sum += numeric_iterable[index]
+    })
+    return sum;
+};
+
+
+non_iste = ["dupontaignan", "lepen","melenchon", "asselineau"]
+oui_iste = ["macron", "arthaud", "poutou","fillon"]
+indefini = ["cheminade", "lassalle", "hamon"]
+
+score_non_iste = sum_by_index_of_a_iterable(non_iste , candidats, results)
+score_oui_iste = sum_by_index_of_a_iterable(oui_iste , candidats, results)
+score_indefini = sum_by_index_of_a_iterable(indefini , candidats, results)
+
+
+var data_pie = [score_non_iste,score_oui_iste,score_indefini];
+
+var width = 600,
+    height = 300,
+    radius = Math.min(width, height) / 2;
+
+var color_pie = d3.scaleOrdinal()
+    .range(["#98abc5", "#7b6888"]);
+
+var arc = d3.arc()
+    .outerRadius(radius - 10)
+    .innerRadius(0);
+
+var labelArc = d3.arc()
+    .outerRadius(radius - 40)
+    .innerRadius(radius - 40);
+
+var pie = d3.pie()
+    .sort(null)
+    .value(function(d) { return d; });
+
+var svg_pie = d3.select("#piechart").append("svg")
+    .attr("width", width)
+    .attr("height", height)
+    .append("g")
+    .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+
+  var g_pie = svg_pie.selectAll(".arc")
+      .data(pie(data_pie))
+      .enter().append("g")
+      .attr("class", "arc")
+      .append("path")
+//      .attr("class", "arc")
+      .attr("d", arc)
+    .style("fill", function(d) { return color_pie(d.data_pie); })
+    .append("text")
+      .attr("transform", function(d) { return "translate(" + labelArc.centroid(d) + ")"; })
+      .attr("dy", ".35em")
+      .text(function(d) { return d.data_pie; });
+
+
+
+
+function redraw(d){
+
+    var id = d3.select(this).attr("id").substring(1)
+    var results = m["$" + id].slice(8);
+
+    score_non_iste = sum_by_index_of_a_iterable(non_iste , candidats, results)
+    score_oui_iste = sum_by_index_of_a_iterable(oui_iste , candidats, results)
+    score_indefini = sum_by_index_of_a_iterable(indefini , candidats, results)
+    
+    var data_pie = [score_non_iste,score_oui_iste,score_indefini];
+
+    console.log(id, results)    
+    
+    svg_bar.selectAll(".bar")
+	.data(results)
+	.transition().duration(1000)
+    	.attr("x", function(d, i) {
+	    console.log('test');
+	    return x(candidats[i]); })
+        .attr("y", function(d) { return y(d); })
+	.attr("height", function(d) { return height - y(d); })
+	.style("fill", function(d,i) {
+	    return dico[candidats[i]].couleur;
+	});
+
+
+    svg_pie.selectAll("g.arc")
+      .data(pie(data_pie))
+//	.append("g")
+//	.attr("class", "arc")
+    //	.append("path")
+	.select("path")
+	.attr("d", arc)
+	.style("fill", function(d) { return color_pie(d.data_pie); })
+	.append("text")
+	.attr("transform", function(d) { return "translate(" + labelArc.centroid(d) + ")"; })
+	.attr("dy", ".35em")
+	//.text(function(d) { return d.data_pie; });
+    
 };
