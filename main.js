@@ -6,7 +6,7 @@ var myStyle = {
     fillOpacity: 0
 };
 
-var map = L.map('map').setView(start_coord, 11);
+var map = L.map('map').setView(start_coord, 12);
 
 L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {}).addTo(map);
 
@@ -70,7 +70,7 @@ d3.json("data/paris_bv.json", function(error, fra) {
 	.attr("fill", colorer)
 	.attr("stroke", colorer)
 	.attr("stroke-width", 1)
-	.style("opacity","0.5")
+	.style("opacity","1")
 	.on("mouseover", function() {
 	    d3.select(this).moveToFront()
 		.attr("fill", function() {
@@ -86,7 +86,6 @@ d3.json("data/paris_bv.json", function(error, fra) {
     
 
 
-    recolorer('melenchon');
     map.on("moveend", reset);
 //    map.on("zoomend", reset);
     reset();
@@ -303,9 +302,9 @@ score_indefini = sum_by_index_of_a_iterable(indefini , candidats, results)
 
 var data_pie = [score_non_iste,score_oui_iste,score_indefini];
 
-var width = 600,
-    height = 300,
-    radius = Math.min(width, height) / 2;
+var width_pie = 600,
+    height_pie = 300,
+    radius = Math.min(width_pie, height_pie) / 2;
 
 var color_pie = d3.scaleOrdinal()
     .range(["#98abc5", "#7b6888"]);
@@ -323,10 +322,10 @@ var pie = d3.pie()
     .value(function(d) { return d; });
 
 var svg_pie = d3.select("#piechart").append("svg")
-    .attr("width", width)
-    .attr("height", height)
+    .attr("width", width_pie)
+    .attr("height", height_pie)
     .append("g")
-    .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+    .attr("transform", "translate(" + width_pie / 2 + "," + height_pie / 2 + ")");
 
   var g_pie = svg_pie.selectAll(".arc")
       .data(pie(data_pie))
@@ -355,13 +354,12 @@ function redraw(d){
     
     var data_pie = [score_non_iste,score_oui_iste,score_indefini];
 
-    console.log(id, results)    
     
     svg_bar.selectAll(".bar")
 	.data(results)
 	.transition().duration(1000)
     	.attr("x", function(d, i) {
-	    console.log('test');
+
 	    return x(candidats[i]); })
         .attr("y", function(d) { return y(d); })
 	.attr("height", function(d) { return height - y(d); })
@@ -371,17 +369,19 @@ function redraw(d){
 
 
     svg_pie.selectAll("g.arc")
-      .data(pie(data_pie))
+	.data(pie(data_pie))
+//	.transition().duration(1000)
 //	.append("g")
 //	.attr("class", "arc")
     //	.append("path")
 	.select("path")
 	.attr("d", arc)
+    	.select("text")
 	.style("fill", function(d) { return color_pie(d.data_pie); })
-	.append("text")
 	.attr("transform", function(d) { return "translate(" + labelArc.centroid(d) + ")"; })
 	.attr("dy", ".35em")
-	//.text(function(d) { return d.data_pie; });
+    	.text(function(d) { return d.data_pie; });
+
     
 };
 
@@ -393,3 +393,4 @@ d3.select("#range1").on("input", function () {
                     .ease(d3.easeLinear)
                     .style("opacity", d3.select("#range1").property("value")/100);
     });
+console.log(height)
