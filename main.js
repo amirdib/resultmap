@@ -10,7 +10,7 @@ var map = L.map('map').setView(start_coord, 12);
 
 L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {}).addTo(map);
 
-var circos = L.geoJson(circos, {style:myStyle})//.addTo(map);
+var circos = L.geoJson(circos, {style:myStyle});
 
 var overlayMaps = {
     "Circonscriptions": circos
@@ -87,7 +87,6 @@ d3.json("data/paris_bv.json", function(error, fra) {
 
 
     map.on("moveend", reset);
-//    map.on("zoomend", reset);
     reset();
     
     function reset(){
@@ -248,13 +247,9 @@ var svg_bar = d3.select("body").select("div#barplot")
 // get the data
 id = "$1-1"
 var results = m[id].slice(8);
-//var candidats = Object.keys(dico)
-// Scale the range of the data in the domains
 x.domain(candidats);
-//y.domain([0, d3.max(results, function(d) { return d; })]);
 y.domain([0, 700]);
 
-  // append the rectangles for the bar chart
 svg_bar.selectAll(".bar")
     .data(results)
     .enter()
@@ -267,13 +262,10 @@ svg_bar.selectAll(".bar")
     .style("fill", function(d,i) {
 	return dico[candidats[i]].couleur;
     });
-///    .style("fill", "#DC2A1B ");
 
-// add the x Axis
 svg_bar.append("g")
     .attr("transform", "translate(0," + height + ")")
     .call(d3.axisBottom(x));
-// add the y Axis
 svg_bar.append("g")
     .call(d3.axisLeft(y));
 
@@ -332,7 +324,6 @@ var svg_pie = d3.select("#piechart").append("svg")
       .enter().append("g")
       .attr("class", "arc")
       .append("path")
-//      .attr("class", "arc")
       .attr("d", arc)
     .style("fill", function(d) { return color_pie(d.data_pie); })
     .append("text")
@@ -370,10 +361,6 @@ function redraw(d){
 
     svg_pie.selectAll("g.arc")
 	.data(pie(data_pie))
-//	.transition().duration(1000)
-//	.append("g")
-//	.attr("class", "arc")
-    //	.append("path")
 	.select("path")
 	.attr("d", arc)
     	.select("text")
