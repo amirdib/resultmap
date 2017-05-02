@@ -17,6 +17,7 @@
   "dependencies": {
     "d3": "^4.8.0",
     "topojson": "^3.0.0",
-    "requirejs": "^2.3.3"
+    "requirejs": "^2.3.3",
+    "jquery": "^3.2.1"
   }
 }
