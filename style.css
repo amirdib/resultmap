@@ -52,3 +52,23 @@ html, body
     margin-top: 0px;
 }
 
+
+.popup-menu
+{
+    width:300px;
+    position: fixed;
+    right:40px;
+    top:80px;
+    z-index: 10000;
+}
+
+.popup-normal
+{
+
+}
+
+.popup-hide
+{
+    display:hide;
+}
+
