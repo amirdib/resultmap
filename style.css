@@ -28,6 +28,8 @@ html, body
 #main-header .navbar-header
 {
     width: 100%;
+    margin-right: 0px;
+    margin-left: 0px;
 }
 
 #map 
