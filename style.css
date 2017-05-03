@@ -1,27 +1,101 @@
-.arc text {
-  font: 10px sans-serif;
-  text-anchor: middle;
+body 
+{
+  padding-top: 40px;
 }
 
-.arc path {
-  stroke: #fff;
+html, body 
+{
+    height: 100%;
 }
 
-.leaflet-zoom-animated{
-    z-index:-1;
+.template 
+{
+    height:100%;
+    margin: 0;
+    padding: 0;
+
 }
 
-#map{
-    position: relative;
-    float: left;
+.logo-fi
+{
+    padding-top: 9px;
+    padding-right: 4px;
+    display:block;
+    max-height:30px;
+    width: auto;
 }
 
-#piechart{
-    position: relative;
-    float: right;
+#main-header .navbar-header
+{
+    width: 100%;
+    margin-right: 0px;
+    margin-left: 0px;
 }
 
-#pie_title{
-     text-align: center;
-     
+#map 
+{
+    height: 100% ;
+    width:100%;
+    margin:0;
+    padding:0;
+    overflow-x: hidden !important;
+}
+
+.fill { 
+    width:100%;
+    height:100%;
+    min-height:100%;
+}
+
+/***************************************************************/
+/* #accordion menu */
+#accordion
+{
+    margin-bottom: 0px;
+>>>>>>> webInterface
+}
+
+.icon-collapse
+{
+    display: block;
+    position:absolute;
+    top: 9px;
+    right: 9px;
+}
+
+#accordion .accordion-btn
+{
+    position:relative;
+    padding: 5px;
+}
+
+
+
+#accordion.panel-group .panel + .panel 
+{
+    margin-top: 0px;
+}
+
+.popup-menu
+{
+    z-index: 10000;
+    position: fixed;
+
+    width:400px;
+    
+    right: 15px;
+    top: 60px;
+
+    opacity: 0.9;
+    
+}
+
+.normal-menu
+{
+    padding-top: 2px;
+}
+
+.hide-menu
+{
+    display:none;
 }

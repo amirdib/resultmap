@@ -1,22 +1,15 @@
- var start_coord = [48.856578, 2.351828]
+var startCoord = [48.856578, 2.351828]
+var map = L.map('map').setView(startCoord, 12);
 
+var streetLayer = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {}).addTo(map);
 
-var myStyle = {
+var circonscriptionStyle = {
     weight: 2,
     fillOpacity: 0
 };
+var circonscriptionsLayer = L.geoJson(circos, {style:circonscriptionStyle}).addTo(map);
 
-var map = L.map('map').setView(start_coord, 12);
 
-L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {}).addTo(map);
-
-var circos = L.geoJson(circos, {style:myStyle});
-
-var overlayMaps = {
-    "Circonscriptions": circos
-};
-
-L.control.layers(overlayMaps).addTo(map);
 
 
 var w = 600,
@@ -50,23 +43,7 @@ d3.selection.prototype.moveToBack = function() {
 //    geneLegende(d)
 };
 
-function geneLegende(d) {
-    console.log('legend')
-        $("#paris.legende").empty()
-        malegende = "";
-        if (d != undefined) {
-            for (i = 0; i <= dico[d].steps.length - 2; i++) {
-                malegende += "<div class=\"unecouleur\">"
-                malegende += "<span class=\"bulle\" style=\"background-color:" + dico[d].color[i] + ";\"></span>"
-                malegende += String(dico[d].steps[i]).replace(".", ",")
-                if (i != dico[d].steps.length - 2) malegende += " à "
-                malegende += String(dico[d].steps[i + 1]).replace("100", "").replace(".", ",") + "&nbsp;" + ((i == dico[d].steps.length - 2) ? "% et +" : "%")
-                malegende += "</div>"
-            };
-        }
-        $("#paris .legende").html(malegende)
 
-    }
 
 var svg = d3.select(map.getPanes().overlayPane).append("svg"),
     g = svg.append("g").attr("class", "leaflet-zoom-hide");
@@ -135,9 +112,6 @@ d3.json("data/paris_bv.json", function(error, fra) {
 	this.stream.point(point.x, point.y);
     }
 });
-
-
-
 
 
 // /* on recolore */
@@ -244,7 +218,7 @@ function colorer(d) {
 };
 
 
-// BAR PLOT
+// // BAR PLOT
 
 var margin = {top: 20, right: 20, bottom: 30, left: 40},
     width = 600 - margin.left - margin.right,
@@ -347,7 +321,7 @@ var svg_pie = d3.select("#piechart").append("svg")
     .attr("width", width_pie)
     .attr("height", height_pie)
     .append("g")
-    .attr("transform", "translate(" + width_pie / 2 + "," + height_pie / 2 + ")");
+    .attr("transform", "translate(" + (width_pie / 4 - 10) + "," + height_pie / 2 + ")");
 
   var g_pie = svg_pie.selectAll(".arc")
       .data(pie(data_pie))
@@ -435,11 +409,14 @@ function redraw(d){
     
 };
 
-d3.select("#range1").on("input", function () {
-
+d3.select("#opacitySlider").on("input", function () {
+    console.log('test')
     svg.selectAll('path.bv')
-                    .transition()
-                    .duration(400)
-                    .ease(d3.easeLinear)
-                    .style("opacity", d3.select("#range1").property("value")/100);
-    });
+        .transition()
+        .duration(400)
+        .ease(d3.easeLinear)
+        .style("opacity", d3.select("#opacitySlider").property("value")/100);
+    console.log(d3.select("#opacitySlider"))
+    console.log('test2')
+});
+

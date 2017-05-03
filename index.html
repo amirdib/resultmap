@@ -1,57 +1,140 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html>
   <head>
-    <meta charset="utf-8">
-        <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css"/>  
-	<link rel="stylesheet" type="text/css" href="style.css" media="all"/>
-	<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+    <title>Tractiflette</title>
+    <meta charset="utf-8"/>
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Roboto+Slab" rel="stylesheet"> 
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="bower_components/fancybox/dist/jquery.fancybox.css" type="text/css" media="screen" />  
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css"/>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="theme.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="icon" type="image/png" href="media/favicon-fi2.png" />
+
   </head>
-  
-  <body>
 
-    <div style="margin-left: 150px; margin-top: 2px;">
-      <span class="leftlabel">0</span>
-      <input id ="range1" type="range" min="0" max="100" value="100" style="width: 400px; margin-right: 10px;"/>
-      <span class="rightlabel">100</span>
-    </div>
-	  
-    <div class="selections">
-      <SELECT id="quidonc">
-        <OPTION selected value="entete">Candidat arrivé premier</OPTION>
-        <OPTION value="macron">Emmanuel Macron</OPTION>
-        <OPTION value="fillon">François Fillon</OPTION>
-        <OPTION value="melenchon">Jean-Luc Mélenchon</OPTION>
-        <OPTION value="hamon">Benoît Hamon</OPTION>
-        <OPTION value="lepen">Marine Le Pen</OPTION>
-        <OPTION value="dupontaignan">Nicolas Dupont-Aignan</OPTION>
-        <OPTION value="asselineau">François Asselineau</OPTION>
-        <OPTION value="poutou">Philippe Poutou</OPTION>
-        <OPTION value="lassalle">Jean Lassalle</OPTION>
-        <OPTION value="arthaud">Nathalie Arthaud</OPTION>
-        <OPTION value="cheminade">Jacques Cheminade</OPTION>
-      </SELECT>
-    </div>
-    
+  <body>    
+    <!-- BEGIN header -->
+    <nav id="main-header" class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header"> 
+          <a href="#" class="pull-left"><img class="logo-fi" src="media/logo-fi.png"></a>         
+          <a class="navbar-brand" href="#">Tractiflette</a>
+          <button id="display-button" class="btn btn-primary navbar-btn pull-right"><i class="fa fa-cog" aria-hidden="true"></i></button>
+        </div>        
+      </div>
+    </nav>
+    <!-- END header -->
+    <div class="template container-fluid">
+    <!-- BEGIN Navigation Menu -->
+      <div id="accordion" class="panel-group popup-menu" role="tablist" aria-multiselectable="true">
+        <!-- Parametres -->
+        <div class="panel panel-default">
+          <!-- header -->
+          <a class="btn btn-block btn-primary accordion-btn" role="tab" id="heading-parametres" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-parametres" aria-expanded="true" aria-controls="collapse-parametres">
+                Paramètres
+                <i class="icon-collapse fa fa-plus-square" aria-hidden="true"></i>
+          </a>
 
-      
-    <div id="map" style="width: 600px; height: 400px"></div>
-    <div id="piechart" style="width: 600px; height: 300px">
-      <div id="pie_title">Ségmentation des voix par la question européenne</div>
-    </div>
-    <div id="barplot" style="width: 600px; height: 300px"></div>
+          <!-- collapse -->
+          <div id="collapse-parametres" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+            <div class="panel-body">
+	      <!-- MODIFICATION margin-left from 150 px to 20 px -->
+	      <div style="margin-left: 20px; margin-top: 2px;">
+		        <span class="leftlabel">0</span>
+		            <input id="opacitySlider" type="range" min="0" max="100" value="100" style="width: 200px; margin-right: 10px; align:left;"/>
+		            <span class="rightlabel">100</span>
+	      </div>
+	      
+      	         <div class="selections">
+            		    <select id="quidonc">
+            		      <option selected value="entete">Candidat arrivé premier</option>
+            		  <option value="macron">Emmanuel Macron</option>
+            		  <option value="fillon">François Fillon</option>
+            		  <option value="melenchon">Jean-Luc Mélenchon</option>
+            		  <option value="hamon">Benoît Hamon</option>
+            		  <option value="lepen">Marine Le Pen</option>
+            		  <option value="dupontaignan">Nicolas Dupont-Aignan</option>
+            		  <option value="asselineau">François Asselineau</option>
+            		  <option value="poutou">Philippe Poutou</option>
+            		  <option value="lassalle">Jean Lassalle</option>
+            		  <option value="arthaud">Nathalie Arthaud</option>
+            		  <option value="cheminade">Jacques Cheminade</option>
+            		</select>
+      	      </div>
 
+            </div>
+          </div>
+        </div>  
+        <!-- Resultats -->
+        <div class="panel panel-default">
+          <!-- header -->
+           <a class="btn btn-block btn-primary accordion-btn" role="tab" id="heading-resultats" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-resultats" aria-expanded="true" aria-controls="collapse-resultats">         
+                Résultats
+                <i class="icon-collapse fa fa-plus-square" aria-hidden="true"></i>
+          </a>
+          <!-- collapse -->
+          <div id="collapse-resultats" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+            <div class="panel-body">
+	             <div id="barplot"></div>			
+            </div>
+          </div>
+        </div>  
+        <!-- Analyse -->
+        <div class="panel panel-default">
+          <!-- header -->
+          <a class="btn btn-block btn-primary accordion-btn" role="tab" id="heading-analyse" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-analyse" aria-expanded="true" aria-controls="collapse-analyse">
+                Analyse
+                <i class="icon-collapse fa fa-plus-square" aria-hidden="true"></i>
+          </a>
+          <!-- collapse -->
+          <div id="collapse-analyse" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+            <div class="panel-body">
+                <div id="piechart"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <!-- END Navigation Menu -->
+
+    <!-- BEGIN map -->
+    <div class="panel panel-default fill">
+      <div id="map" class=""></div>
+    </div>
+    <!-- END map -->
+    </div>
   </body>
-  
-  <script src="bower_components/d3/d3.js"></script>
-  <script src="scripts/leaflet.ajax.min.js"></script>  
-  <script src="bower_components/topojson/topojson.js"></script>
-  <script src="bower_components/jquery/dist/jquery.js"></script>
+  <!-- BEGIN js -->
+ 
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    
+    <!-- BEGIN vendors -->
+    
+    <script src="bower_components/leaflet/dist/leaflet.js"></script>    
+    <script src="bower_components/topojson/topojson.js"></script>
+    <script src="bower_components/d3/d3.min.js"></script>
+    <!-- END vendors -->
 
-  <script src="data.js"></script>
-  <script src="data/circos.js"></script>
-  <script src="main.js"></script>
+    <!-- BEGIN Bootstrap -->
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- END Bootstrap -->
 
+    <!-- BEGIN custom -->
+    <script src="scripts/circos.js"></script>
+    <script src="scripts/data.js"></script>
+    <script src="scripts/map.js"></script>
+    <script src="scripts/popupMenu.js"></script>
+      
+    </script>
+    <!-- END custom -->
 
-
-
+  <!-- END js -->
 </html>
