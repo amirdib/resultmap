@@ -62,13 +62,13 @@ html, body
     z-index: 10000;
 }
 
-.popup-normal
+.normal-menu
 {
 
 }
 
-.popup-hide
+.hide-menu
 {
-    display:hide;
+    display:none;
 }
 
