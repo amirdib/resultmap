@@ -231,16 +231,24 @@ var x = d3.scaleBand()
 var y = d3.scaleLinear()
           .range([height, 0]);
           
+
+
+var svg_bar_width = width + margin.left + margin.right;
+var svg_bar_height = +height + margin.top + margin.bottom;
+
 // append the svg object to the body of the page
 // append a 'group' element to 'svg'
 // moves the 'group' element to the top left margin
 var svg_bar = d3.select("body").select("div#barplot")
     .append("svg")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
+    .attr("width", "100%")
+    .attr("height", "100%")
+    .attr("viewBox", "0 0 "+svg_bar_width.toString()+" "+svg_bar_height.toString())
     .append("g")
     .attr("transform", 
           "translate(" + margin.left + "," + margin.top + ")");
+
+
  
 // get the data
 id = "$1-1"
@@ -297,8 +305,8 @@ var data_pie = [{"eu":"Oui","vote":score_oui_iste},
 	    {"eu":"ND","vote":score_indefini}
 	   ];
 
-var width_pie = 600,
-    height_pie = 300,
+var width_pie = 400,
+    height_pie = 400,
     radius = Math.min(width_pie, height_pie) / 2;
 
 var color_pie = d3.scaleOrdinal()
@@ -318,10 +326,11 @@ var pie = d3.pie()
     .value(function(d) { return d.vote; });
 
 var svg_pie = d3.select("#piechart").append("svg")
-    .attr("width", width_pie)
-    .attr("height", height_pie)
-    .append("g")
-    .attr("transform", "translate(" + (width_pie / 4 - 10) + "," + height_pie / 2 + ")");
+    .attr("width", "100%")
+    .attr("height", "100%")
+    .attr("viewBox", (-width_pie/2).toString()+" "+(-height_pie/2).toString()+" "+width_pie.toString()+" "+height_pie.toString())
+    .append("g");
+    //.attr("transform", "translate(" + (width_pie / 4 - 10) + "," + height_pie / 2 + ")");
 
   var g_pie = svg_pie.selectAll(".arc")
       .data(pie(data_pie))
