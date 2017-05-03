@@ -5,25 +5,27 @@
     <meta http-equiv="x-ua-compatible" content="IE=edge">
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>
 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="bower_components/fancybox/dist/jquery.fancybox.css" type="text/css" media="screen" />
     <style>
       #map{ height: 100% }
     </style>
-
+    
     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css"/>
-        <script src="bower_components/leaflet/dist/leaflet.js"></script>
+    
+    <script src="bower_components/leaflet/dist/leaflet.js"></script>
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="bower_components/topojson/topojson.js"></script>
     <script src="bower_components/d3/d3.min.js"></script>
 
-    <!-- Bootstrap -->
-    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css">
-    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-    <!-- End Bootstrap -->
+    
+    <!-- BEGIN Bootstrap -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 
-    <!-- Fancybox -->
-    <link rel="stylesheet" href="bower_components/fancybox/dist/jquery.fancybox.css" type="text/css" media="screen" />
+
     <script type="text/javascript" src="bower_components/fancybox/dist/jquery.fancybox.js"></script>
-    <!-- End Fancybox -->
+    <!-- END Bootstrap -->
     
     <link rel="stylesheet" type="text/css" href="style.css">
     
@@ -32,6 +34,54 @@
   <body>
 
     <div id="map"></div>
+
+    <!-- BEGIN Navigation Menu -->
+    <div id="accordion" role="tablist" aria-multiselectable="true">
+      <div class="card">
+	<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+	<div class="card-header" role="tab" id="headingOne">
+	  <h5 class="mb-0">
+            Paramètres
+	  </h5>
+	</div>
+	</a>
+
+	<div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
+	  <div class="card-block">
+	    111
+	  </div>
+	</div>
+      </div>
+      <div class="card">
+	<div class="card-header" role="tab" id="headingTwo">
+	  <h5 class="mb-0">
+            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+              Résultats
+            </a>
+	  </h5>
+	</div>
+	<div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
+	  <div class="card-block">
+	    222
+	  </div>
+	</div>
+      </div>
+      <div class="card">
+	<div class="card-header" role="tab" id="headingThree">
+	  <h5 class="mb-0">
+            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+              Analyse du vote
+            </a>
+	  </h5>
+	</div>
+	<div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree">
+	  <div class="card-block">
+	    333
+	  </div>
+	</div>
+      </div>
+    </div>
+    <!-- END Navigation Menu -->
     
   </body>
 
