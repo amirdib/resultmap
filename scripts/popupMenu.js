@@ -3,8 +3,8 @@
 	$(document).ready(
 	function() {
 		
-			console.log("test");
-			console.log($("#display-button"));
+			//console.log("test");
+			//console.log($("#display-button"));
 			$("#display-button").click(menuDisplayToggle);
 			
 			
@@ -12,13 +12,13 @@
 
 
 	/**
-	Fonction qui permet de switcher entre les differents affichages du menu accordion
+	Fonction qui permet de switcher entre les differents affichages du menu #accordion
 	(juste une classe par etat, le css fait le reste)
 	cf. .popup-menu .normal-menu .hide-menu
 	**/
 	function menuDisplayToggle ()
 	{
-		console.log("menuDisplayToggle");
+		//console.log("menuDisplayToggle");
 
 		var menu=$("#accordion");
 		if(menu.hasClass( "popup-menu" ))
