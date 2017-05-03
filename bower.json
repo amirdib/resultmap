@@ -17,6 +17,8 @@
   "dependencies": {
     "topojson": "^3.0.0",
     "jquery": "^3.2.1",
-    "d3": "^4.8.0"
+    "d3": "^4.8.0",
+    "fancybox": "^3.0.47",
+    "bootstrap": "^3.3.7"
   }
 }
