@@ -35,37 +35,41 @@
         <!-- Parametres -->
         <div class="panel panel-default">
           <!-- header -->
-          <a class="btn btn-block btn-primary accordion-btn" role="tab" id="heading-parametres" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-parametres" aria-expanded="true" aria-controls="collapse-parametres">
+          <a class="btn btn-block btn-primary accordion-btn" role="tab" id="heading-parametres" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-parametres" aria-expanded="false" aria-controls="collapse-parametres">
                 Paramètres
-                <i class="icon-collapse fa fa-plus-square" aria-hidden="true"></i>
+                <i class="icon-collapse fa fa-angle-up" aria-hidden="true"></i>
+                <i class="icon-expand fa fa-angle-down" aria-hidden="true"></i>                
           </a>
 
           <!-- collapse -->
           <div id="collapse-parametres" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
             <div class="panel-body">
-	      <!-- MODIFICATION margin-left from 150 px to 20 px -->
-	      <div style="margin-left: 20px; margin-top: 2px;">
-		        <span class="leftlabel">0</span>
-		            <input id="opacitySlider" type="range" min="0" max="100" value="100" style="width: 200px; margin-right: 10px; align:left;"/>
-		            <span class="rightlabel">100</span>
-	      </div>
-	      
-      	         <div class="selections">
-            		    <select id="quidonc">
-            		      <option selected value="entete">Candidat arrivé premier</option>
-            		  <option value="macron">Emmanuel Macron</option>
-            		  <option value="fillon">François Fillon</option>
-            		  <option value="melenchon">Jean-Luc Mélenchon</option>
-            		  <option value="hamon">Benoît Hamon</option>
-            		  <option value="lepen">Marine Le Pen</option>
-            		  <option value="dupontaignan">Nicolas Dupont-Aignan</option>
-            		  <option value="asselineau">François Asselineau</option>
-            		  <option value="poutou">Philippe Poutou</option>
-            		  <option value="lassalle">Jean Lassalle</option>
-            		  <option value="arthaud">Nathalie Arthaud</option>
-            		  <option value="cheminade">Jacques Cheminade</option>
-            		</select>
-      	      </div>
+              <form>
+                <div class="form-group">
+  	             <!-- MODIFICATION margin-left from 150 px to 20 px -->
+  	               <!-- <div style="margin-left: 20px; margin-top: 2px;"> -->
+                  <label for="opacitySlider">Opacité</label>
+                  <div class="sliderValue">0</div>
+  		            <input id="opacitySlider" class="form-control" type="range" min="0" max="100" value="100"/>
+                  <div class="sliderValue clearfix">100</div>
+  	             <!-- </div> -->
+        	        <label for="quidonc">Type d'affichage</label>
+              		  <select id="quidonc" class="form-control">
+              		      <option selected value="entete">Candidat arrivé premier</option>
+              		      <option value="macron">Emmanuel Macron</option>
+              		      <option value="fillon">François Fillon</option>
+              		      <option value="melenchon">Jean-Luc Mélenchon</option>
+              		      <option value="hamon">Benoît Hamon</option>
+              		      <option value="lepen">Marine Le Pen</option>
+              		      <option value="dupontaignan">Nicolas Dupont-Aignan</option>
+              		      <option value="asselineau">François Asselineau</option>
+              		      <option value="poutou">Philippe Poutou</option>
+              		      <option value="lassalle">Jean Lassalle</option>
+              		      <option value="arthaud">Nathalie Arthaud</option>
+              		      <option value="cheminade">Jacques Cheminade</option>
+              		  </select>
+        	       </div>
+              </form>
 
             </div>
           </div>
@@ -73,9 +77,10 @@
         <!-- Resultats -->
         <div class="panel panel-default">
           <!-- header -->
-           <a class="btn btn-block btn-primary accordion-btn" role="tab" id="heading-resultats" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-resultats" aria-expanded="true" aria-controls="collapse-resultats">         
+           <a class="btn btn-block btn-primary accordion-btn" role="tab" id="heading-resultats" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-resultats" aria-expanded="false" aria-controls="collapse-resultats">         
                 Résultats
-                <i class="icon-collapse fa fa-plus-square" aria-hidden="true"></i>
+                <i class="icon-collapse fa fa-angle-up" aria-hidden="true"></i>
+                <i class="icon-expand fa fa-angle-down" aria-hidden="true"></i>    
           </a>
           <!-- collapse -->
           <div id="collapse-resultats" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
@@ -91,9 +96,10 @@
         <!-- Analyse -->
         <div class="panel panel-default">
           <!-- header -->
-          <a class="btn btn-block btn-primary accordion-btn" role="tab" id="heading-analyse" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-analyse" aria-expanded="true" aria-controls="collapse-analyse">
+          <a class="btn btn-block btn-primary accordion-btn" role="tab" id="heading-analyse" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-analyse" aria-expanded="false" aria-controls="collapse-analyse">
                 Analyse
-                <i class="icon-collapse fa fa-plus-square" aria-hidden="true"></i>
+                <i class="icon-collapse fa fa-angle-up" aria-hidden="true"></i>
+                <i class="icon-expand fa fa-angle-down" aria-hidden="true"></i>    
           </a>
           <!-- collapse -->
           <div id="collapse-analyse" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
