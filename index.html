@@ -1,91 +1,111 @@
+<!DOCTYPE html>
 <html>
   <head>
     <title></title>
     <meta charset="utf-8"/>
     <meta http-equiv="x-ua-compatible" content="IE=edge">
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-    <link rel="stylesheet" href="bower_components/fancybox/dist/jquery.fancybox.css" type="text/css" media="screen" />
-    <style>
-      #map{ height: 100% }
-    </style>
-    
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="bower_components/fancybox/dist/jquery.fancybox.css" type="text/css" media="screen" />  
     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css"/>
-    
-    <script src="bower_components/leaflet/dist/leaflet.js"></script>
-    <script src="bower_components/jquery/dist/jquery.min.js"></script>
-    <script src="bower_components/topojson/topojson.js"></script>
-    <script src="bower_components/d3/d3.min.js"></script>
-
-    
-    <!-- BEGIN Bootstrap -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
-
-
-    <script type="text/javascript" src="bower_components/fancybox/dist/jquery.fancybox.js"></script>
-    <!-- END Bootstrap -->
-    
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="style.css">
-    
+
   </head>
 
-  <body>
-
-    <div id="map"></div>
-
+  <body>    
+    <!-- BEGIN header -->
+    <nav id="main-header" class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">          
+          <a class="navbar-brand" href="#">Project name</a>
+          <button class="btn btn-danger navbar-btn pull-right"><i class="fa fa-cog" aria-hidden="true"></i></button>
+        </div>        
+      </div>
+    </nav>
+    <!-- END header -->
+    <div class="template container-fluid">
     <!-- BEGIN Navigation Menu -->
-    <div id="accordion" role="tablist" aria-multiselectable="true">
-      <div class="card">
-	<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-	<div class="card-header" role="tab" id="headingOne">
-	  <h5 class="mb-0">
-            Paramètres
-	  </h5>
-	</div>
-	</a>
+      <div id="accordion" class="panel-group" role="tablist" aria-multiselectable="true">
+        <!-- Parametres -->
+        <div class="panel panel-default">
+          <!-- header -->
+          <a class="btn btn-block btn-primary accordion-btn" role="tab" id="heading-parametres" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-parametres" aria-expanded="true" aria-controls="collapse-parametres">
+                Paramètres
+                <i class="icon-collapse fa fa-plus-square" aria-hidden="true"></i>
+          </a>
 
-	<div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
-	  <div class="card-block">
-	    111
-	  </div>
-	</div>
+          <!-- collapse -->
+          <div id="collapse-parametres" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+            <div class="panel-body">
+              Paramètres content
+            </div>
+          </div>
+        </div>  
+        <!-- Resultats -->
+        <div class="panel panel-default">
+          <!-- header -->
+           <a class="btn btn-block btn-primary accordion-btn" role="tab" id="heading-resultats" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-resultats" aria-expanded="true" aria-controls="collapse-resultats">         
+                Résultats
+                <i class="icon-collapse fa fa-plus-square" aria-hidden="true"></i>
+          </a>
+          <!-- collapse -->
+          <div id="collapse-resultats" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+            <div class="panel-body">
+              Résultats content
+            </div>
+          </div>
+        </div>  
+        <!-- Analyse -->
+        <div class="panel panel-default">
+          <!-- header -->
+          <a class="btn btn-block btn-primary accordion-btn" role="tab" id="heading-analyse" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-analyse" aria-expanded="true" aria-controls="collapse-analyse">
+                Analyse
+                <i class="icon-collapse fa fa-plus-square" aria-hidden="true"></i>
+          </a>
+          <!-- collapse -->
+          <div id="collapse-analyse" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+            <div class="panel-body">
+              Analyse
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="card">
-	<div class="card-header" role="tab" id="headingTwo">
-	  <h5 class="mb-0">
-            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-              Résultats
-            </a>
-	  </h5>
-	</div>
-	<div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
-	  <div class="card-block">
-	    222
-	  </div>
-	</div>
-      </div>
-      <div class="card">
-	<div class="card-header" role="tab" id="headingThree">
-	  <h5 class="mb-0">
-            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-              Analyse du vote
-            </a>
-	  </h5>
-	</div>
-	<div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree">
-	  <div class="card-block">
-	    333
-	  </div>
-	</div>
-      </div>
-    </div>
     <!-- END Navigation Menu -->
-    
-  </body>
 
-  <script src="scripts/circos.js"></script>
-  <script src="scripts/data.js"></script>
-  <script src="scripts/map.js"></script>
+    <!-- BEGIN map -->
+    <div class="panel panel-default fill">
+      <div id="map" class=""></div>
+    </div>
+    <!-- END map -->
+    </div>
+  </body>
+  <!-- BEGIN js -->
+ 
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    
+    <!-- BEGIN vendors -->
+    
+    <script src="bower_components/leaflet/dist/leaflet.js"></script>    
+    <script src="bower_components/topojson/topojson.js"></script>
+    <script src="bower_components/d3/d3.min.js"></script>
+    <!-- END vendors -->
+
+    <!-- BEGIN Bootstrap -->
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- END Bootstrap -->
+
+    <!-- BEGIN custom -->
+    <script src="scripts/circos.js"></script>
+    <script src="scripts/data.js"></script>
+    <script src="scripts/map.js"></script>
+      
+    </script>
+    <!-- END custom -->
+
+  <!-- END js -->
 </html>

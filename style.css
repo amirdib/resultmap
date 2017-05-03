@@ -1,40 +1,54 @@
-#map {
-    	 height: 100% ;
-	 width:100%;
-	 align: center;
-	 margin:0;
-	 padding:0;
-	 overflow-x: hidden !important;
+body 
+{
+  padding-top: 50px;
 }
 
-/* .car-header { */
-/*     width: 100%; */
-/*     height: 40px; */
-/*     color: #fff; */
-/*     background-color: #ea8b42; */
-/*     border-radius: 5px 5px 0 0; */
-/*     -o-transition:color .2s ease-out, background .2s ease-in; */
-/*     -ms-transition:color .2s ease-out, background .2s ease-in; */
-/*     -moz-transition:color .2s ease-out, background .2s ease-in; */
-/*     -webkit-transition:color .2s ease-out, background .2s ease-in; */
-/*     /\* ...and now override with proper CSS property *\/ */
-/*     transition:color .2s ease-out, background .2s ease-in; */
-/* } */
-
-#accordion {
-    position: absolute;
-    top: 70px;
-    right: 20px;
-    font-family: 'Lato', 'sans-serif';
-    font-size: 18px;
-    background-color: white;
-    /* border: 1px solid gray; */
-    /* padding: 5px 10px; */
-    border-radius: 5px;
-    box-shadow: 2px 2px 10px rgba(75, 75, 75, .5);
-    width: 415px;
-    min-width: 285px;
-    z-index: 1;
+html, body 
+{
+    height: 100%;
 }
 
+.template 
+{
+    height:100%;
+  /*padding: 40px 15px;
+  text-align: center;*/
+}
+
+#main-header .navbar-header
+{
+    width: 100%;
+}
+
+#map 
+{
+    height: 100% ;
+    width:100%;
+    margin:0;
+    padding:0;
+    overflow-x: hidden !important;
+}
+
+.fill { 
+    width:100%;
+    height:100%;
+    min-height:100%;
+}
+
+#accordion .accordion-btn
+{
+    position:relative;
+}
+
+.icon-collapse
+{
+    display: block;
+    position:absolute;
+    top: 10px;
+    right: 11px;
+}
+
+#accordion.panel-group .panel + .panel {
+    margin-top: 0px;
+}
 
