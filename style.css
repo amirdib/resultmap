@@ -1,45 +1,27 @@
-div #paris{
-    width:300px;
-}
 .arc text {
   font: 10px sans-serif;
   text-anchor: middle;
 }
 
-.barplot{
-    float:right;
-}
 .arc path {
-    stroke: #fff;
+  stroke: #fff;
 }
 
 .leaflet-zoom-animated{
     z-index:-1;
 }
 
-.legende {
-    font-size: 1rem;
-    text-align: left;
-    min-height: 8rem;
-    width: 90%;
-    margin: 10px 5%;
+#map{
+    position: relative;
+    float: left;
 }
 
-
-.legende .unecouleur {
-    display: inline-block;
-    padding: 1rem;
+#piechart{
+    position: relative;
+    float: right;
 }
 
-.bulle {
-    border-radius: 50%;
-    width: 1rem;
-    height: 1rem;
-    border: 0;
-    display: inline-block;
-    margin: -.3rem .5rem 0 0;
-    vertical-align: middle;
-    cursor: default;
+#pie_title{
+     text-align: center;
+
 }
-
-
