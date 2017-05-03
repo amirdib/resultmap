@@ -318,9 +318,9 @@ score_indefini = sum_by_index_of_a_iterable(indefini , candidats, results)
 
 var data_pie = [score_non_iste,score_oui_iste,score_indefini];
 
-var data_pie = [{"eu":"oui","vote":score_oui_iste},
-	    {"eu":"non","vote":score_non_iste},
-	    {"eu":"idf","vote":score_indefini}
+var data_pie = [{"eu":"Oui","vote":score_oui_iste},
+	    {"eu":"Non","vote":score_non_iste},
+	    {"eu":"ND","vote":score_indefini}
 	   ];
 
 var width_pie = 600,
@@ -378,9 +378,9 @@ function redraw(d){
     
     //var data_pie = [score_non_iste,score_oui_iste,score_indefini];
 
-    var data_pie = [{"eu":"oui","vote":score_oui_iste},
-	    {"eu":"non","vote":score_non_iste},
-	    {"eu":"idf","vote":score_indefini}
+    var data_pie = [{"eu":"Oui","vote":score_oui_iste},
+	    {"eu":"Non","vote":score_non_iste},
+	    {"eu":"ND","vote":score_indefini}
 	       ];
     
     svg_bar.selectAll(".bar")
