@@ -396,15 +396,19 @@ function redraw(d){
 	});
 
 
-    d3.selectAll("g.arc")
+    var g_pie = d3.selectAll("g.arc")
 	.data(pie(data_pie))
-	.select("path")
+
+    
+    g_pie.select("path")
 	.attr("d", arc)
     	.style("fill", function(d) { return color_pie(d.data.eu); })
-    	.select("text")
-	.attr("transform", function(d) { return "translate(" + labelArc.centroid(d) + ")"; })
+    
+    g_pie.select("text")
+	.attr("transform", function(d) {
+	    console.log(labelArc.centroid(d))
+	    return "translate(" + labelArc.centroid(d) + ")"; })
     	.text(function(d) {
-	    console.log(d.data.eu)
 	    return d.data.eu; })
 	.style("fill", "#fff");        
 ;
@@ -420,4 +424,3 @@ d3.select("#range1").on("input", function () {
                     .ease(d3.easeLinear)
                     .style("opacity", d3.select("#range1").property("value")/100);
     });
-console.log(height)
