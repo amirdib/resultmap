@@ -20,8 +20,9 @@
     <!-- BEGIN header -->
     <nav id="main-header" class="navbar navbar-inverse navbar-fixed-top">
       <div class="container-fluid">
-        <div class="navbar-header">          
-          <a class="navbar-brand" href="#">Project name</a>
+        <div class="navbar-header"> 
+          <a href="#" class="navbar-left"><img class="logo-fi" src="media/logo-fi.png"></a>         
+          <a class="navbar-brand" href="#"> Project name</a>
           <button id="display-button" class="btn btn-primary navbar-btn pull-right"><i class="fa fa-cog" aria-hidden="true"></i></button>
         </div>        
       </div>
@@ -43,29 +44,28 @@
             <div class="panel-body">
 	      <!-- MODIFICATION margin-left from 150 px to 20 px -->
 	      <div style="margin-left: 20px; margin-top: 2px;">
-		<span class="leftlabel">0</span>
-		<input id="opacitySlider" type="range" min="0" max="100" value="100" style="width: 200px; margin-right: 10px; align:left;"/>
-		<span class="rightlabel">100</span>
+		        <span class="leftlabel">0</span>
+		            <input id="opacitySlider" type="range" min="0" max="100" value="100" style="width: 200px; margin-right: 10px; align:left;"/>
+		            <span class="rightlabel">100</span>
 	      </div>
 	      
-	      <div class="selections">
-		<SELECT id="quidonc">
-		  <OPTION selected value="entete">Candidat arrivé premier</OPTION>
-		  <OPTION value="macron">Emmanuel Macron</OPTION>
-		  <OPTION value="fillon">François Fillon</OPTION>
-		  <OPTION value="melenchon">Jean-Luc Mélenchon</OPTION>
-		  <OPTION value="hamon">Benoît Hamon</OPTION>
-		  <OPTION value="lepen">Marine Le Pen</OPTION>
-		  <OPTION value="dupontaignan">Nicolas Dupont-Aignan</OPTION>
-		  <OPTION value="asselineau">François Asselineau</OPTION>
-		  <OPTION value="poutou">Philippe Poutou</OPTION>
-		  <OPTION value="lassalle">Jean Lassalle</OPTION>
-		  <OPTION value="arthaud">Nathalie Arthaud</OPTION>
-		  <OPTION value="cheminade">Jacques Cheminade</OPTION>
-		</SELECT>
-	      </div>
-	      
-              Paramètres content
+      	         <div class="selections">
+            		    <select id="quidonc">
+            		      <option selected value="entete">Candidat arrivé premier</option>
+            		  <option value="macron">Emmanuel Macron</option>
+            		  <option value="fillon">François Fillon</option>
+            		  <option value="melenchon">Jean-Luc Mélenchon</option>
+            		  <option value="hamon">Benoît Hamon</option>
+            		  <option value="lepen">Marine Le Pen</option>
+            		  <option value="dupontaignan">Nicolas Dupont-Aignan</option>
+            		  <option value="asselineau">François Asselineau</option>
+            		  <option value="poutou">Philippe Poutou</option>
+            		  <option value="lassalle">Jean Lassalle</option>
+            		  <option value="arthaud">Nathalie Arthaud</option>
+            		  <option value="cheminade">Jacques Cheminade</option>
+            		</select>
+      	      </div>
+
             </div>
           </div>
         </div>  
@@ -79,9 +79,7 @@
           <!-- collapse -->
           <div id="collapse-resultats" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
             <div class="panel-body">
-              Résultats content
-	      <div id="barplot"></div>
-			
+	             <div id="barplot"></div>			
             </div>
           </div>
         </div>  
@@ -95,8 +93,7 @@
           <!-- collapse -->
           <div id="collapse-analyse" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
             <div class="panel-body">
-              Analyse2
-	      <div id="piechart"></div>
+                <div id="piechart"></div>
             </div>
           </div>
         </div>

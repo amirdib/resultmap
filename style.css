@@ -1,6 +1,6 @@
 body 
 {
-  padding-top: 50px;
+  padding-top: 40px;
 }
 
 html, body 
@@ -11,8 +11,18 @@ html, body
 .template 
 {
     height:100%;
-  /*padding: 40px 15px;
-  text-align: center;*/
+    margin: 0;
+    padding: 0;
+
+}
+
+.logo-fi
+{
+    padding-top: 9px;
+    padding-right: 4px;
+    display:block;
+    max-height:30px;
+    width: auto;
 }
 
 #main-header .navbar-header
@@ -35,15 +45,11 @@ html, body
     min-height:100%;
 }
 
-#accordion.popup-menu
+/***************************************************************/
+/* #accordion menu */
+#accordion
 {
-    opacity: 0.9;
-}
-
-#accordion .accordion-btn
-{
-    position:relative;
-    padding: 5px;
+    margin-bottom: 0px;
 }
 
 .icon-collapse
@@ -54,23 +60,37 @@ html, body
     right: 9px;
 }
 
-#accordion.panel-group .panel + .panel {
-    margin-top: 0px;
+
+#accordion .accordion-btn
+{
+    position:relative;
+    padding: 5px;
 }
 
 
+
+#accordion.panel-group .panel + .panel 
+{
+    margin-top: 0px;
+}
+
 .popup-menu
 {
-    width:300px;
-    position: fixed;
-    right:40px;
-    top:80px;
     z-index: 10000;
+    position: fixed;
+
+    width:400px;
+    
+    right: 15px;
+    top: 60px;
+
+    opacity: 0.9;
+    
 }
 
 .normal-menu
 {
-
+    padding-top: 2px;
 }
 
 .hide-menu
