@@ -220,16 +220,17 @@ function colorer(d) {
 
 // // BAR PLOT
 
-var margin = {top: 20, right: 20, bottom: 30, left: 40},
+var margin = {top: 20, right: 20, bottom: 30, left: 60},
     width = 600 - margin.left - margin.right,
     height = 300 - margin.top - margin.bottom;
 
 // set the ranges
-var x = d3.scaleBand()
+var x = d3.scaleLinear()
           .range([0, width])
-          .padding(0.1);
-var y = d3.scaleLinear()
-          .range([height, 0]);
+
+var y = d3.scaleBand()
+    .range([height, 0])
+    .padding(0.1);
           
 // append the svg object to the body of the page
 // append a 'group' element to 'svg'
@@ -245,30 +246,29 @@ var svg_bar = d3.select("body").select("div#barplot")
 // get the data
 id = "$1-1"
 var results = m[id].slice(8);
-x.domain(candidats);
-y.domain([0, 700]);
+y.domain(candidats);
+x.domain([0, 700]);
+
+svg_bar.append("g")
+    .attr("class", "x axis")
+    .attr("transform", "translate(0," + height + ")")
+    .call(d3.axisTop(x));
+svg_bar.append("g")
+    .attr("class", "y axis")
+    .call(d3.axisLeft(y));
 
 svg_bar.selectAll(".bar")
     .data(results)
     .enter()
     .append("rect")
     .attr("class", "bar")
-    .attr("x", function(d, i) { return x(candidats[i]); })
-    .attr("width", x.bandwidth())
-    .attr("y", function(d) { return y(d); })
-    .attr("height", function(d) { return height - y(d); })
+    .attr("x", 0)
+    .attr("height", y.bandwidth())
+    .attr("y", function(d, i) { return y(candidats[i]); })
+    .attr("width", function(d) { return x(d); })
     .style("fill", function(d,i) {
 	return dico[candidats[i]].couleur;
     });
-
-svg_bar.append("g")
-    .attr("transform", "translate(0," + height + ")")
-    .call(d3.axisBottom(x));
-svg_bar.append("g")
-    .call(d3.axisLeft(y));
-
-
-
 
 function sum_by_index_of_a_iterable(iterable,reference_iterable, numeric_iterable)
 {
@@ -297,7 +297,7 @@ var data_pie = [{"eu":"Oui","vote":score_oui_iste},
 	    {"eu":"ND","vote":score_indefini}
 	   ];
 
-var width_pie = 600,
+var width_pie = 300,
     height_pie = 300,
     radius = Math.min(width_pie, height_pie) / 2;
 
@@ -321,7 +321,7 @@ var svg_pie = d3.select("#piechart").append("svg")
     .attr("width", width_pie)
     .attr("height", height_pie)
     .append("g")
-    .attr("transform", "translate(" + (width_pie / 4 - 10) + "," + height_pie / 2 + ")");
+    .attr("transform", "translate(" + (width_pie / 2 - 10) + "," + height_pie / 2 + ")");
 
   var g_pie = svg_pie.selectAll(".arc")
       .data(pie(data_pie))
@@ -350,30 +350,23 @@ function redraw(d){
     score_oui_iste = sum_by_index_of_a_iterable(oui_iste , candidats, results)
     score_indefini = sum_by_index_of_a_iterable(indefini , candidats, results)
     
-    //var data_pie = [score_non_iste,score_oui_iste,score_indefini];
-
     var data_pie = [{"eu":"Oui","vote":score_oui_iste},
-	    {"eu":"Non","vote":score_non_iste},
-	    {"eu":"ND","vote":score_indefini}
-	       ];
+		    {"eu":"Non","vote":score_non_iste},
+		    {"eu":"ND","vote":score_indefini}];
     
     svg_bar.selectAll(".bar")
 	.data(results)
 	.transition().duration(1000)
-    	.attr("x", function(d, i) {
-
-	    return x(candidats[i]); })
-        .attr("y", function(d) { return y(d); })
-	.attr("height", function(d) { return height - y(d); })
-	.style("fill", function(d,i) {
-	    return dico[candidats[i]].couleur;
-	});
-
-
+        .attr("x", 0)
+	.attr("height", y.bandwidth())
+	.attr("y", function(d, i) { return y(candidats[i]); })
+	.attr("width", function(d) { return x(d); })
+	.style("fill", function(d,i) {return dico[candidats[i]].couleur;});
+	
+    
     var g_pie = d3.selectAll("g.arc")
 	.data(pie(data_pie))
     	.transition().duration(1000)
-
     
     g_pie.select("path")
 	.attrTween("d",arcTween)
@@ -385,9 +378,6 @@ function redraw(d){
     	.text(function(d) {
 	    return d.data.eu; })
 	.style("fill", "#fff");        
-
-
-    
 
     function arcTween(a) {
 	var i = d3.interpolate(this._current, a);
@@ -404,9 +394,6 @@ function redraw(d){
 	    return "translate(" + labelArc.centroid(i(t)) + ")";
 	};
     }
-    
-
-    
 };
 
 d3.select("#opacitySlider").on("input", function () {
