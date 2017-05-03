@@ -39,6 +39,30 @@
           <!-- collapse -->
           <div id="collapse-parametres" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
             <div class="panel-body">
+	      <!-- MODIFICATION margin-left from 150 px to 20 px -->
+	      <div style="margin-left: 20px; margin-top: 2px;">
+		<span class="leftlabel">0</span>
+		<input id ="range1" type="range" min="0" max="100" value="100" style="width: 200px; margin-right: 10px; align:left;"/>
+		<span class="rightlabel">100</span>
+	      </div>
+	      
+	      <div class="selections">
+		<SELECT id="quidonc">
+		  <OPTION selected value="entete">Candidat arrivé premier</OPTION>
+		  <OPTION value="macron">Emmanuel Macron</OPTION>
+		  <OPTION value="fillon">François Fillon</OPTION>
+		  <OPTION value="melenchon">Jean-Luc Mélenchon</OPTION>
+		  <OPTION value="hamon">Benoît Hamon</OPTION>
+		  <OPTION value="lepen">Marine Le Pen</OPTION>
+		  <OPTION value="dupontaignan">Nicolas Dupont-Aignan</OPTION>
+		  <OPTION value="asselineau">François Asselineau</OPTION>
+		  <OPTION value="poutou">Philippe Poutou</OPTION>
+		  <OPTION value="lassalle">Jean Lassalle</OPTION>
+		  <OPTION value="arthaud">Nathalie Arthaud</OPTION>
+		  <OPTION value="cheminade">Jacques Cheminade</OPTION>
+		</SELECT>
+	      </div>
+	      
               Paramètres content
             </div>
           </div>
@@ -54,6 +78,8 @@
           <div id="collapse-resultats" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
             <div class="panel-body">
               Résultats content
+	      <div id="barplot"></div>
+			
             </div>
           </div>
         </div>  
@@ -67,7 +93,8 @@
           <!-- collapse -->
           <div id="collapse-analyse" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
             <div class="panel-body">
-              Analyse
+              Analyse2
+	      <div id="piechart"></div>
             </div>
           </div>
         </div>
