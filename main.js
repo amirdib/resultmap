@@ -398,20 +398,39 @@ function redraw(d){
 
     var g_pie = d3.selectAll("g.arc")
 	.data(pie(data_pie))
+    	.transition().duration(1000)
 
     
     g_pie.select("path")
-	.attr("d", arc)
+	.attrTween("d",arcTween)
     	.style("fill", function(d) { return color_pie(d.data.eu); })
     
     g_pie.select("text")
 	.attr("transform", function(d) {
-	    console.log(labelArc.centroid(d))
 	    return "translate(" + labelArc.centroid(d) + ")"; })
     	.text(function(d) {
 	    return d.data.eu; })
 	.style("fill", "#fff");        
-;
+
+
+    
+
+    function arcTween(a) {
+	var i = d3.interpolate(this._current, a);
+	this._current = i(0);
+	return function(t) {
+	    return arc(i(t));
+	};
+    } 
+
+    function labelarcTween(a) {
+	var i = d3.interpolate(this._current, a);
+	this._current = i(0);
+	return function(t) {
+	    return "translate(" + labelArc.centroid(i(t)) + ")";
+	};
+    }
+    
 
     
 };
