@@ -318,12 +318,18 @@ score_indefini = sum_by_index_of_a_iterable(indefini , candidats, results)
 
 var data_pie = [score_non_iste,score_oui_iste,score_indefini];
 
+var data_pie = [{"eu":"oui","vote":score_oui_iste},
+	    {"eu":"non","vote":score_non_iste},
+	    {"eu":"idf","vote":score_indefini}
+	   ];
+
 var width_pie = 600,
     height_pie = 300,
     radius = Math.min(width_pie, height_pie) / 2;
 
 var color_pie = d3.scaleOrdinal()
-    .range(["#98abc5", "#7b6888"]);
+    .range(["#2C93E8","#838690","#F56C4E"]);
+    
 
 var arc = d3.arc()
     .outerRadius(radius - 10)
@@ -335,7 +341,7 @@ var labelArc = d3.arc()
 
 var pie = d3.pie()
     .sort(null)
-    .value(function(d) { return d; });
+    .value(function(d) { return d.vote; });
 
 var svg_pie = d3.select("#piechart").append("svg")
     .attr("width", width_pie)
@@ -347,13 +353,16 @@ var svg_pie = d3.select("#piechart").append("svg")
       .data(pie(data_pie))
       .enter().append("g")
       .attr("class", "arc")
-      .append("path")
+
+
+      g_pie.append("path")
       .attr("d", arc)
-    .style("fill", function(d) { return color_pie(d.data_pie); })
-    .append("text")
+      .style("fill", function(d) { return color_pie(d.data.eu); });
+
+    g_pie.append("text")
       .attr("transform", function(d) { return "translate(" + labelArc.centroid(d) + ")"; })
-      .attr("dy", ".35em")
-      .text(function(d) { return d.data_pie; });
+      .text(function(d) { return d.data.eu; })
+      .style("fill", "#fff");;
 
 
 
@@ -367,8 +376,12 @@ function redraw(d){
     score_oui_iste = sum_by_index_of_a_iterable(oui_iste , candidats, results)
     score_indefini = sum_by_index_of_a_iterable(indefini , candidats, results)
     
-    var data_pie = [score_non_iste,score_oui_iste,score_indefini];
+    //var data_pie = [score_non_iste,score_oui_iste,score_indefini];
 
+    var data_pie = [{"eu":"oui","vote":score_oui_iste},
+	    {"eu":"non","vote":score_non_iste},
+	    {"eu":"idf","vote":score_indefini}
+	       ];
     
     svg_bar.selectAll(".bar")
 	.data(results)
@@ -383,15 +396,18 @@ function redraw(d){
 	});
 
 
-    svg_pie.selectAll("g.arc")
+    d3.selectAll("g.arc")
 	.data(pie(data_pie))
 	.select("path")
 	.attr("d", arc)
+    	.style("fill", function(d) { return color_pie(d.data.eu); })
     	.select("text")
-	.style("fill", function(d) { return color_pie(d.data_pie); })
 	.attr("transform", function(d) { return "translate(" + labelArc.centroid(d) + ")"; })
-	.attr("dy", ".35em")
-    	.text(function(d) { return d.data_pie; });
+    	.text(function(d) {
+	    console.log(d.data.eu)
+	    return d.data.eu; })
+	.style("fill", "#fff");        
+;
 
     
 };
