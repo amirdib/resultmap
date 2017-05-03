@@ -409,11 +409,13 @@ function redraw(d){
     
 };
 
-// d3.select("#range1").on("input", function () {
-
-//     svg.selectAll('path.bv')
-//                     .transition()
-//                     .duration(400)
-//                     .ease(d3.easeLinear)
-//                     .style("opacity", d3.select("#range1").property("value")/100);
-//     });
+d3.select("#opacitySlider").on("input", function () {
+    console.log('test')
+    svg.selectAll('path.bv')
+        .transition()
+        .duration(400)
+        .ease(d3.easeLinear)
+        .style("opacity", d3.select("#opacitySlider").property("value")/100);
+    console.log(d3.select("#opacitySlider"))
+    console.log('test2')
+});
