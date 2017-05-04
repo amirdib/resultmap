@@ -179,7 +179,7 @@ function debase(d) {
 }
 
 function geneLegende(d) {
-    $("#paris .legende").empty()
+    $(".legende").empty()
     malegende = "";
     if (d != undefined) {
         for (i = 0; i <= dico[d].steps.length - 2; i++) {
@@ -191,9 +191,12 @@ function geneLegende(d) {
             malegende += "</div>"
         };
     }
-    $("#paris .legende").html(malegende)
+    console.log('Legende: ')
+    console.log(malegende)
+    $(".legende").html(malegende)
     //    d3.selectAll(".bulle").style("background-color","#feedf6")
     d3.selectAll(".bulle").style("background-color",function(e,i){
+	console.log('test leg d3: ')
 	return dico[d].couleur[i+1];
     })
 //    debugger;
