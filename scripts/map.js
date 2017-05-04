@@ -67,7 +67,7 @@ d3.json("data/paris_bv.json", function(error, fra) {
 	.attr("fill", colorer)
 	.attr("stroke", colorer)
 	.attr("stroke-width", 1)
-	.style("opacity","1")
+	.style("opacity","0.5")
 	.on("mouseover", function() {
 	    d3.select(this).moveToFront()
 		.attr("fill", function() {
