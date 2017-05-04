@@ -231,18 +231,23 @@ var x = d3.scaleLinear()
 var y = d3.scaleBand()
     .range([height, 0])
     .padding(0.1);
-          
+
+
+var svg_bar_width = width + margin.left + margin.right;
+var svg_bar_height = +height + margin.top + margin.bottom;
+
 // append the svg object to the body of the page
 // append a 'group' element to 'svg'
 // moves the 'group' element to the top left margin
 var svg_bar = d3.select("body").select("div#barplot")
     .append("svg")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
+    .attr("width", "100%")
+    .attr("height", "100%")
+    .attr("viewBox", "0 0 "+svg_bar_width.toString()+" "+svg_bar_height.toString())
     .append("g")
     .attr("transform", 
           "translate(" + margin.left + "," + margin.top + ")");
- 
+
 // get the data
 id = "$1-1"
 var results = m[id].slice(8);
@@ -297,8 +302,8 @@ var data_pie = [{"eu":"Oui","vote":score_oui_iste},
 	    {"eu":"ND","vote":score_indefini}
 	   ];
 
-var width_pie = 300,
-    height_pie = 300,
+var width_pie = 400,
+    height_pie = 400,
     radius = Math.min(width_pie, height_pie) / 2;
 
 var color_pie = d3.scaleOrdinal()

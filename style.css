@@ -54,13 +54,6 @@ html, body
     margin-bottom: 0px;
 }
 
-.icon-collapse
-{
-    display: block;
-    position:absolute;
-    top: 9px;
-    right: 9px;
-}
 
 #accordion .accordion-btn
 {
@@ -73,6 +66,13 @@ html, body
 #accordion.panel-group .panel + .panel 
 {
     margin-top: 0px;
+}
+
+#accordion.popup-menu .panel-body
+{
+    max-height: 75vh;
+    overflow-y: auto;
+
 }
 
 .popup-menu
@@ -97,4 +97,79 @@ html, body
 .hide-menu
 {
     display:none;
+}
+
+.icon-collapse, .icon-expand
+{
+    display: block;
+    position:absolute;
+    top: 9px;
+    right: 9px;
+}
+
+
+
+
+[aria-expanded="false"] .icon-expand {
+    display: block;
+}
+[aria-expanded="false"] .icon-collapse {
+    display: none;
+}
+
+[aria-expanded="true"] .icon-expand {
+    display: none;
+}
+[aria-expanded="true"] .icon-collapse {
+    display: block;
+}
+
+
+
+.clearfix::after 
+{
+    display: block;
+    content: "";
+    clear: both;
+
+}
+
+/***************************************************************/
+/* FORM */
+label
+{
+    width: 100%;
+    margin-top: 10px;
+}
+#opacitySlider
+{
+    width: 90%;
+    float:left;
+}
+
+.sliderValue
+{
+    float:left;
+    margin: 2px;
+    font-size: 11px;
+}
+
+
+/***************************************************************/
+/* GRAPHS */
+#barplot
+{
+ max-width: 600px;
+ margin-left: auto;
+ margin-right: auto;
+}
+
+
+#piechart
+{
+    width: 70%;
+    height: 70%;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
 }

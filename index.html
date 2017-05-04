@@ -1,116 +1,130 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Tractiflette</title>
-    <meta charset="utf-8"/>
-    <meta http-equiv="x-ua-compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <head>
+	<title>Tractiflette</title>
+	<meta charset="utf-8"/>
+	<meta http-equiv="x-ua-compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
+	<link href="https://fonts.googleapis.com/css?family=Montserrat|Roboto+Slab" rel="stylesheet"> 
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="bower_components/fancybox/dist/jquery.fancybox.css" type="text/css" media="screen" />  
+	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css"/>
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="theme.css">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="icon" type="image/png" href="media/favicon-fi2.png" />
 
-    <link href="https://fonts.googleapis.com/css?family=Montserrat|Roboto+Slab" rel="stylesheet"> 
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="bower_components/fancybox/dist/jquery.fancybox.css" type="text/css" media="screen" />  
-    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css"/>
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="theme.css">
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <link rel="icon" type="image/png" href="media/favicon-fi2.png" />
+    </head>
 
-  </head>
+    <body>    
+	<!-- BEGIN header -->
+	<nav id="main-header" class="navbar navbar-inverse navbar-fixed-top">
+	    <div class="container-fluid">
+		<div class="navbar-header"> 
+		    <a href="#" class="pull-left"><img class="logo-fi" src="media/logo-fi.png"></a>         
+		    <a class="navbar-brand" href="#">Tractiflette</a>
+		    <button id="display-button" class="btn btn-primary navbar-btn pull-right"><i class="fa fa-bars" aria-hidden="true"></i></button>
+		</div>        
+	    </div>
+	</nav>
+	<!-- END header -->
+	<div class="template container-fluid">
+	    <!-- BEGIN Navigation Menu -->
+	    <div id="accordion" class="panel-group popup-menu" role="tablist" aria-multiselectable="true">
+		<!-- Parametres -->
+		<div class="panel panel-default">
+		    <!-- header -->
+		    <a class="btn btn-block btn-primary accordion-btn" role="tab" id="heading-parametres" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-parametres" aria-expanded="false" aria-controls="collapse-parametres">
+			Paramètres
+			<i class="icon-collapse fa fa-angle-up" aria-hidden="true"></i>
+			<i class="icon-expand fa fa-angle-down" aria-hidden="true"></i>                
+		    </a>
 
-  <body>    
-    <!-- BEGIN header -->
-    <nav id="main-header" class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container-fluid">
-        <div class="navbar-header"> 
-          <a href="#" class="pull-left"><img class="logo-fi" src="media/logo-fi.png"></a>         
-          <a class="navbar-brand" href="#">Tractiflette</a>
-          <button id="display-button" class="btn btn-primary navbar-btn pull-right"><i class="fa fa-cog" aria-hidden="true"></i></button>
-        </div>        
-      </div>
-    </nav>
-    <!-- END header -->
-    <div class="template container-fluid">
-    <!-- BEGIN Navigation Menu -->
-      <div id="accordion" class="panel-group popup-menu" role="tablist" aria-multiselectable="true">
-        <!-- Parametres -->
-        <div class="panel panel-default">
-          <!-- header -->
-          <a class="btn btn-block btn-primary accordion-btn" role="tab" id="heading-parametres" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-parametres" aria-expanded="true" aria-controls="collapse-parametres">
-                Paramètres
-                <i class="icon-collapse fa fa-plus-square" aria-hidden="true"></i>
-          </a>
+		    <!-- collapse -->
+		    <div id="collapse-parametres" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+			<div class="panel-body">
+			    <form>
+				<div class="form-group">
+  				    <!-- MODIFICATION margin-left from 150 px to 20 px -->
+  				    <!-- <div style="margin-left: 20px; margin-top: 2px;"> -->
+				    <label for="opacitySlider">Opacité</label>
+				    <div class="sliderValue">0</div>
+  				    <input id="opacitySlider" class="form-control" type="range" min="0" max="100" value="100"/>
+				    <div class="sliderValue clearfix">100</div>
+  				    <!-- </div> -->
+        			    <label for="quidonc">Type d'affichage</label>
+              			    <select id="quidonc" class="form-control">
+              				<option selected value="entete">Candidat arrivé premier</option>
+              				<option value="macron">Emmanuel Macron</option>
+              				<option value="fillon">François Fillon</option>
+              				<option value="melenchon">Jean-Luc Mélenchon</option>
+              				<option value="hamon">Benoît Hamon</option>
+              				<option value="lepen">Marine Le Pen</option>
+              				<option value="dupontaignan">Nicolas Dupont-Aignan</option>
+              				<option value="asselineau">François Asselineau</option>
+              				<option value="poutou">Philippe Poutou</option>
+              				<option value="lassalle">Jean Lassalle</option>
+              				<option value="arthaud">Nathalie Arthaud</option>
+              				<option value="cheminade">Jacques Cheminade</option>
+              			    </select>
+        			</div>
+			    </form>
 
-          <!-- collapse -->
-          <div id="collapse-parametres" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-            <div class="panel-body">
-	      <!-- MODIFICATION margin-left from 150 px to 20 px -->
-	      <div style="margin-left: 20px; margin-top: 2px;">
-		        <span class="leftlabel">0</span>
-		            <input id="opacitySlider" type="range" min="0" max="100" value="100" style="width: 200px; margin-right: 10px; align:left;"/>
-		            <span class="rightlabel">100</span>
-	      </div>
-	      
-      	         <div class="selections">
-            		    <select id="quidonc">
-            		      <option selected value="entete">Candidat arrivé premier</option>
-            		  <option value="macron">Emmanuel Macron</option>
-            		  <option value="fillon">François Fillon</option>
-            		  <option value="melenchon">Jean-Luc Mélenchon</option>
-            		  <option value="hamon">Benoît Hamon</option>
-            		  <option value="lepen">Marine Le Pen</option>
-            		  <option value="dupontaignan">Nicolas Dupont-Aignan</option>
-            		  <option value="asselineau">François Asselineau</option>
-            		  <option value="poutou">Philippe Poutou</option>
-            		  <option value="lassalle">Jean Lassalle</option>
-            		  <option value="arthaud">Nathalie Arthaud</option>
-            		  <option value="cheminade">Jacques Cheminade</option>
-            		</select>
-      	      </div>
+			</div>
+		    </div>
+		</div>  
+		<!-- Resultats -->
+		<div class="panel panel-default">
+		    <!-- header -->
+		    <a class="btn btn-block btn-primary accordion-btn" role="tab" id="heading-resultats" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-resultats" aria-expanded="false" aria-controls="collapse-resultats">         
+			Résultats
+			<i class="icon-collapse fa fa-angle-up" aria-hidden="true"></i>
+			<i class="icon-expand fa fa-angle-down" aria-hidden="true"></i>    
+		    </a>
+		    <!-- collapse -->
+		    <div id="collapse-resultats" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+			<div class="panel-body">
+			    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+			    </p>
+			    <h3 class="text-center">Titre barplot</h3>
 
-            </div>
-          </div>
-        </div>  
-        <!-- Resultats -->
-        <div class="panel panel-default">
-          <!-- header -->
-           <a class="btn btn-block btn-primary accordion-btn" role="tab" id="heading-resultats" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-resultats" aria-expanded="true" aria-controls="collapse-resultats">         
-                Résultats
-                <i class="icon-collapse fa fa-plus-square" aria-hidden="true"></i>
-          </a>
-          <!-- collapse -->
-          <div id="collapse-resultats" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-            <div class="panel-body">
-	             <div id="barplot"></div>			
-            </div>
-          </div>
-        </div>  
-        <!-- Analyse -->
-        <div class="panel panel-default">
-          <!-- header -->
-          <a class="btn btn-block btn-primary accordion-btn" role="tab" id="heading-analyse" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-analyse" aria-expanded="true" aria-controls="collapse-analyse">
-                Analyse
-                <i class="icon-collapse fa fa-plus-square" aria-hidden="true"></i>
-          </a>
-          <!-- collapse -->
-          <div id="collapse-analyse" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-            <div class="panel-body">
-                <div id="piechart"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    <!-- END Navigation Menu -->
+			    <div id="barplot"></div>			
+			</div>
+		    </div>
+		</div>  
+		<!-- Analyse -->
+		<div class="panel panel-default">
+		    <!-- header -->
+		    <a class="btn btn-block btn-primary accordion-btn" role="tab" id="heading-analyse" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-analyse" aria-expanded="false" aria-controls="collapse-analyse">
+			Analyse
+			<i class="icon-collapse fa fa-angle-up" aria-hidden="true"></i>
+			<i class="icon-expand fa fa-angle-down" aria-hidden="true"></i>    
+		    </a>
+		    <!-- collapse -->
+		    <div id="collapse-analyse" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+			<div class="panel-body">
+			    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+			    </p>
+			    <h3 class="text-center">Titre piechart</h3>
+			    <div id="piechart"></div>
+			    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+			    </p>
+			</div>
+		    </div>
+		</div>
+	    </div>
+	    <!-- END Navigation Menu -->
 
-    <!-- BEGIN map -->
-    <div class="panel panel-default fill">
-      <div id="map" class=""></div>
-    </div>
-    <!-- END map -->
-    </div>
-  </body>
-  <!-- BEGIN js -->
- 
+	    <!-- BEGIN map -->
+	    <div class="panel panel-default fill">
+		<div id="map" class=""></div>
+	    </div>
+	    <!-- END map -->
+	</div>
+    </body>
+    <!-- BEGIN js -->
+    
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     
@@ -132,9 +146,9 @@
     <script src="scripts/data.js"></script>
     <script src="scripts/map.js"></script>
     <script src="scripts/popupMenu.js"></script>
-      
+    
     </script>
     <!-- END custom -->
 
-  <!-- END js -->
+    <!-- END js -->
 </html>
